@@ -26,7 +26,7 @@ describe Response do
   describe 'finders' do
     it_should_behave_like 'model class with common scopes'
     
-    describe '“limit” scope' do
+    describe '"limit" scope' do
       before(:each) do
         5.times{create_valid_response}
       end

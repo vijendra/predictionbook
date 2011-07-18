@@ -15,7 +15,7 @@
   This prediction is <strong>private</strong>. <%= render :partial => 'predictions/private_note' %>
 </p>
 <%- end -%>
-<% if logged_in? && !@prediction.withdrawn? -%>
+<% if user_signed_in? && !@prediction.withdrawn? -%>
 <div id="judgement">
   <h2>Judge this prediction</h2>
   <p class="note">Only judge this prediction once its outcome is known.<br />Record your opinion below.</p>
@@ -39,7 +39,7 @@
 </div>
 <% end %>
 <%= render :partial => 'predictions/events' %>
-<% if logged_in? -%>
+<% if user_signed_in? -%>
 <div id='response'>
   <%= render :partial => 'responses/form' %>
 </div>

@@ -10,13 +10,12 @@
   <![endif]-->
   <% end %>
   <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js' %>
-  <%= javascript_include_tag %w(application /facebox/facebox jquery/ajaxqueue jquery/form jquery/livequery) %>
+  <%= javascript_include_tag %w(application /facebox/facebox jquery/ajaxqueue jquery/form jquery/livequery rails) %>
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body class="<%= yield :bodyclass %>">
 
 <div id="container">
-
 	<div id="header" class="wrapper clear">
 		<div id="main_nav" class="clear">
 			<ul id="nav-menu">
@@ -27,13 +26,13 @@
 			</ul>
       
       <ul id="user-links">
-		  <%- unless logged_in? -%>
-        <li><%= link_to 'Login', login_path %></li>
-        <li><%= link_to 'Signup', signup_path %></li>
+		  <%- unless user_signed_in? -%>
+        <li><%= link_to 'Login', new_user_session_path %></li>
+        <li><%= link_to 'Signup', new_registration_path(:user) %></li>
   		<%- else -%>
   		  <li>Hello, <%= show_user(current_user)  %></li>
-  		  <li><%= link_to 'Settings', settings_user_path(current_user) %></li>
-  		  <li><%= link_to 'Logout', logout_path  %></li>
+  		  <li><%= link_to 'Settings', edit_user_registration_path %></li>
+  		  <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
   		<%- end -%>
       </ul>
 
